@@ -81,37 +81,30 @@
     </style>
 
     <meta charset="UTF-8">
-    <title>JOINT AND ADVERSARIAL TRAINING WITH ASR FOR EXPRESSIVE SPEECH SYNTHESIS</title>
+    <title>Study on Expressiveness of Speech Synthesis Using Multi-resolution Modulation-filtered Cochleagram</title>
   </head>
 
   <body>
     <article>
       <header>
-        <h1><font style="line-height:1.5;">"JOINT AND ADVERSARIAL TRAINING WITH ASR FOR EXPRESSIVE SPEECH SYNTHESIS"</font></h1>
+        <h1><font style="line-height:1.5;">"Study on Expressiveness of Speech Synthesis Using Multi-resolution Modulation-filtered Cochleagram"</font></h1>
       </header>
     </article>
     <!-- <br> -->
     <!-- <div style="font-size: 20px;"><b>Paper:</b> <a href="https://arxiv.org/">arXiv</a> </div> -->
     <br>
 
-    <div style="font-size: 20px;"><b>Authors:</b>Kaili,Zhang<sup>&dagger;</sup>, Cheng Gong<sup>&dagger;</sup>, Wenhuan Lu<sup>*</sup> Longbiao Wang<sup>*</sup>,Jianguo Wei, Dawei Liu</div>
-    <div style="font-size: 20px; width: 1200px;"><b>Abstract:</b>Style modeling is an important issue and has been proposed in expressive speech synthesis. 
-      In existing unsupervised methods, the style encoder extracts the latent representation from the reference audio as style information. However, the style information extracted from the style encoder will entangle some content information, 
-      which will cause conflicts with the real input content, and the synthesized speech will be influenced. 
-      In this study, we propose to alleviate the problem by integrating Text-To-Speech (TTS)  model and Automatic Speech Recognition (ASR) model with a share layer network for joint training,  and using ASR adversarial training to eliminate the content information in the  style information.
-      At the same time, we propose an adaptive adversarial weight learning strategy to prevent the model from collapsing. The objective evaluation using word error rate(WER) demonstrates that our method can effectively alleviate the entanglement between style and content information. 
-      Subjective evaluation indicates that the method improves the quality of synthesized speech and enhances the ability of style transfer compared with the baseline models.
+    <div style="font-size: 20px;"><b>Authors:</b>Kaili,Zhang and Masashi Unoki</div>
+    <div style="font-size: 20px; width: 1200px;"><b>Abstract:</b>SEmotion information is a key part of expressive speech synthesis research.  At present, researchers mainly extract emotional information from mel-spectrogram, and improve the expressiveness of synthesized speech through emotional information and the improvement of model structure.  However, the mel filterbank used to extract mel-spectrogram has serious energy leakage between adjacent frequency bands, which is not conducive to extracting formant features. Therefore, we introduce an auditory feature called multi-resolution modulation-filtered cochleagram (MMCG), which simulates the auditory signal processing mechanism and reflects the function of the human auditory system.  In this work, we propose to extract emotional information from MMCG, and design a MMCG encoder according to the characteristics of MMCG, which aims to improve the expressiveness of synthesized speech. Both subjective and objective experiments demonstrate that our proposed method not only improves the naturalness and style transfer performance of synthesized speech, but also reduces the F0 error, compared with traditional method using mel-spectrogram as feature input.
    </div>
     <br>
-    
     <div>
      <h3>Definition (same as defined in  our submitted paper)</h3>
       <div>
      <strong>Ground Truth: </strong>:Audios are randomly selected from Blizzard Challenge 2013 testset.<br> 
-     <strong> Baseline Modified Tacotron Model: </strong>:  It is the same as our pre-trained TTS model.<br> 
-     <strong>Baseline ASR_guide: </strong> In the training process, the model makes the generated speech recognized well by the ASR, and the ASR task is used to continuously guide the TTS training to make the synthesized speech clearer<br>
-     <strong>Our proposed:</strong>We combine the pre-trained ASR model with the pre-trained TTS model. And we perform ASR adversarial training in order to make the reference audio not well recognized by the ASR, aiming to eliminate the content information in the style information. We also propose an
-            adaptive adversarial weight learning strategy to prevent the model from collapsing
+     <strong>Baseline GST_Mel: </strong>: The GST model uses mel-spectrogram as feature input and uses the reference encoder to extract prosody embedding.<br> 
+     <strong>Proposed_MMCG: </strong> The GST model uses MMCG as feature input and uses the reference encoder to extract prosody embedding.<br>
+        <strong>Proposed_MMCG_Encoder:</strong> We use MMCG as feature input and replace the original reference encoder with our designed MMCG encoder to extract emotion embedding.
     </div>
      <br>
     <h2> <b> Parallel style transfer </b></h2>
