@@ -1,2 +1,228 @@
+<html>
+  <head>
 
-qqq
+    <style>
+   <style>
+        h1 {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 24px;
+            line-height: 250%;
+            font-weight: 500;
+            text-rendering: optimizeLegibility;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-family: 'Open Sans', sans-serif;
+            letter-spacing: 1px;
+            font-weight: 300;
+            line-height: 120%;
+            text-rendering: optimizeLegibility;
+        }
+
+        body {
+            font: normal 12px/150% Arial, Helvetica, sans-serif;
+            background: #fff;
+        }
+
+        table {
+            width: 95%;
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid black;
+            border-collapse: inherit;
+            padding: 2px 2px;
+            text-align: center;
+            word-wrap: break-word;
+            width: 8%;
+        }
+
+        th {
+            padding: 3px 10px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 100;
+            color: #000000;
+            font-size: 15px;
+            border-left: 1px solid black;
+            height: 30px;
+        }
+
+        table tr {
+            color: #000000;
+            border: 1px solid black;
+            font-size: 12px;
+            font-weight: normal;
+            height: 40px;
+        }
+
+        audio {
+            width: 240px;
+            padding-bottom: 1px;
+            padding-top: 4px;
+        }
+
+        div {
+            font-family: 'Century', sans-serif;
+            font-weight: 100;
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+        .sample {
+            font-size: 15px;
+            font-style: italic;
+            border: 1px solid #ddd;
+            padding: 3px;
+            margin-bottom: 2px;
+        }
+      
+    </style>
+
+    <meta charset="UTF-8">
+    <title>JOINT AND ADVERSARIAL TRAINING WITH ASR FOR EXPRESSIVE SPEECH SYNTHESIS</title>
+  </head>
+
+  <body>
+    <article>
+      <header>
+        <h1><font style="line-height:1.5;">"JOINT AND ADVERSARIAL TRAINING WITH ASR FOR EXPRESSIVE SPEECH SYNTHESIS"</font></h1>
+      </header>
+    </article>
+    <!-- <br> -->
+    <!-- <div style="font-size: 20px;"><b>Paper:</b> <a href="https://arxiv.org/">arXiv</a> </div> -->
+    <br>
+
+    <div style="font-size: 20px;"><b>Authors:</b>Kaili,Zhang<sup>&dagger;</sup>, Cheng Gong<sup>&dagger;</sup>, Wenhuan Lu<sup>*</sup> Longbiao Wang<sup>*</sup>,Jianguo Wei, Dawei Liu</div>
+    <div style="font-size: 20px; width: 1200px;"><b>Abstract:</b>Style modeling is an important issue and has been proposed in expressive speech synthesis. 
+      In existing unsupervised methods, the style encoder extracts the latent representation from the reference audio as style information. However, the style information extracted from the style encoder will entangle some content information, 
+      which will cause conflicts with the real input content, and the synthesized speech will be influenced. 
+      In this study, we propose to alleviate the problem by integrating Text-To-Speech (TTS)  model and Automatic Speech Recognition (ASR) model with a share layer network for joint training,  and using ASR adversarial training to eliminate the content information in the  style information.
+      At the same time, we propose an adaptive adversarial weight learning strategy to prevent the model from collapsing. The objective evaluation using word error rate(WER) demonstrates that our method can effectively alleviate the entanglement between style and content information. 
+      Subjective evaluation indicates that the method improves the quality of synthesized speech and enhances the ability of style transfer compared with the baseline models.
+   </div>
+    <br>
+    
+    <div>
+     <h3>Definition (same as defined in  our submitted paper)</h3>
+      <div>
+     <strong>Ground Truth: </strong>:Audios are randomly selected from Blizzard Challenge 2013 testset.<br> 
+     <strong> Baseline Modified Tacotron Model: </strong>:  It is the same as our pre-trained TTS model.<br> 
+     <strong>Baseline ASR_guide: </strong> In the training process, the model makes the generated speech recognized well by the ASR, and the ASR task is used to continuously guide the TTS training to make the synthesized speech clearer<br>
+     <strong>Our proposed:</strong>We combine the pre-trained ASR model with the pre-trained TTS model. And we perform ASR adversarial training in order to make the reference audio not well recognized by the ASR, aiming to eliminate the content information in the style information. We also propose an
+            adaptive adversarial weight learning strategy to prevent the model from collapsing
+    </div>
+     <br>
+    <h2> <b> Parallel style transfer </b></h2>
+   <b>Target Text1 : She was such a little girl that one did not expect to see such a look on her small face. </b>
+   <br>
+<table style="table-layout: auto">
+        <tr>
+            <td>Ground Truth & Reference Audio</td>
+            <td>Baseline Modified Tacotron Model</td>
+            <td>Baseline ASR_guide</td>
+            <td>Our proposed</td>
+        </tr>
+        <tr>
+            <td>
+                <audio src="audios/parallel/a_little_princess_01-000003_1_gt.wav" controls preload="metadata"></audio>
+            </td>
+            <td>
+                <audio src="audios/parallel/a_little_princess_01-000003_4_nogan.wav" controls preload="metadata"></audio>
+            </td>
+            <td>
+                <audio src="audios/parallel/a_little_princess_01-000003_2_li.wav" controls preload="metadata"></audio>
+            </td>
+            <td>
+                <audio src="audios/parallel/a_little_princess_01-000003_3_gan.wav" controls
+                       preload="metadata"></audio>
+            </td>
+        </tr>
+    </table>
+    <br>
+
+
+      <b>Target Text 2 : I should like to know how many of all my numerous engagements take place without your being of the party. </b> 
+<table style="table-layout: auto">
+        <tr>
+            <td>Ground Truth & Reference Audio</td>
+            <td>Baseline Modified Tacotron Model</td>
+            <td>Baseline ASR_guide</td>
+            <td>Our proposed</td>
+        </tr>
+        <tr>
+            <td>
+                <audio src="audios/parallel/emma_36-000191_1_gt.wav" controls preload="metadata"></audio>
+            </td>
+            <td>
+                <audio src="audios/parallel/emma_36-000191_4_nogan.wav" controls preload="metadata"></audio>
+            </td>
+            <td>
+                <audio src="audios/parallel/emma_36-000191_2_li.wav" controls preload="metadata"></audio>
+            </td>
+            <td>
+                <audio src="audios/parallel/emma_36-000191_3_gan.wav" controls preload="metadata"></audio>
+            </td>
+        </tr>
+    </table>
+    <br>
+  <br>
+    <h2> <b> Non-Parallel style transfer </b></h2>
+  <b>Reference Audio Content 1 : That you should take too much care would be quite as bad as that you should take too little.</b>
+  <br>
+   <b> Target Text 1 :  That was forgotten in the simple and still strong attachment of wife to husband.</b>
+    <table style="table-layout: auto">
+        <tr>
+            <td>Ground Truth & Reference Audio</td>
+            <td>Baseline Modified Tacotron Model</td>
+            <td>Baseline ASR_guide</td>
+            <td>Our proposed</td>
+        </tr>
+        <tr>
+            <td>
+                <audio src="audios/no-parallel/12-000122_1_gt.wav" controls preload="metadata"></audio>
+            </td>
+            <td>
+                <audio src="audios/no-parallel/12-000122_4_nogan.wav" controls preload="metadata"></audio>
+            </td>
+            <td>
+                <audio src="audios/no-parallel/12-000122_2_li.wav" controls preload="metadata"></audio>
+            </td>
+            <td>
+                <audio src="audios/no-parallel/12-000122_3_gan.wav" controls
+                       preload="metadata"></audio>
+            </td>
+        </tr>
+    </table>
+    <br>
+<br>
+<b>Reference Audio Content 2 : This was very roomy, with four good stalls.</b> 
+  <br>
+   <b> Target Text 2 : This was more than the poor girl could bear. </b>
+    <table style="table-layout: auto">
+        <tr>
+            <td>Ground Truth & Reference Audio</td>
+            <td>Baseline Modified Tacotron Model</td>
+            <td>Baseline ASR_guide</td>
+            <td>Our proposed</td>
+        </tr>
+        <tr>
+            <td>
+                <audio src="audios/no-parallel/black_beauty_04-000014_1_1_gt.wav" controls preload="metadata"></audio>
+            </td>
+            <td>
+                <audio src="audios/no-parallel/black_beauty_04-000014_1_4_nogan.wav" controls preload="metadata"></audio>
+            </td>
+            <td>
+                <audio src="audios/no-parallel/black_beauty_04-000014_1_2_li.wav" controls preload="metadata"></audio>
+            </td>
+            <td>
+                <audio src="audios/no-parallel/black_beauty_04-000014_1_3_gan.wav" controls preload="metadata"></audio>
+            </td>
+        </tr>
+    </table>
+<br>
+    <br>
+  </body>
+</html>
