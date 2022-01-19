@@ -95,20 +95,20 @@
     <br>
 
     <div style="font-size: 20px;"><b>Authors:</b>Kaili Zhang and Masashi Unoki</div>
-    <div style="font-size: 20px;"><b>Abstract:</b>Emotion information is a key part of expressive speech synthesis research.  At present, researchers mainly extract emotional information from mel-spectrogram, and improve the expressiveness of synthesized speech through emotional information and the improvement of model structure.  However, the mel filterbank used to extract mel-spectrogram has serious energy leakage between adjacent frequency bands, which is not conducive to extracting formant features. Therefore, we introduce an auditory feature called multi-resolution modulation-filtered cochleagram (MMCG), which simulates the auditory signal processing mechanism and reflects the function of the human auditory system.  In this work, we propose to extract emotional information from MMCG, and design a MMCG encoder according to the characteristics of MMCG, which aims to improve the expressiveness of synthesized speech. Both subjective and objective experiments demonstrate that our proposed method not only improves the naturalness and style transfer performance of synthesized speech, but also reduces the F0 error, compared with traditional method using mel-spectrogram as feature input.
+    <div style="font-size: 20px;"><b>Abstract:</b>Emotion information is a key part of expressive speech synthesis research. At present, researchers mainly extract emotion information from mel-spectrogram, and improve the expressiveness of synthesized speech through emotion information and the improvement of model structure. However, the mel filterbank used to extract mel-spectrogram has serious energy leakage between adjacent frequency bands, which is not conducive to extracting formant features. Therefore, an auditory feature called multi-resolution modulation-filtered cochleagram (MMCG) has been introduced to simulate the auditory signal processing mechanism and to reflect the function of the human auditory system. This paper proposes to extract emotion information from MMCG,and design a MMCG encoder according to the characteristics of MMCG, which aims to improve the expressiveness of synthesized speech. Both subjective and objective experiments demonstrate that our proposed method not only improves the naturalness and style transfer performance of synthesized speech, but also reduces the F0 error, compared with traditional method using mel-spectrogram as feature input.
    </div>
     <br>
     <div>
      <h3>Definition (same as defined in  our submitted paper)</h3>
       <div>
      <strong>Ground Truth: </strong>:Audios are randomly selected from Blizzard Challenge 2013 testset.<br> 
-     <strong>Baseline(GST_Mel): </strong>: The GST model uses mel-spectrogram as feature input and uses the reference encoder to extract prosody embedding.<br> 
-     <strong>Proposed_MMCG: </strong> The GST model uses MMCG as feature input and uses the reference encoder to extract prosody embedding.<br>
-        <strong>Proposed_MMCG_Encoder:</strong> We use MMCG as feature input and replace the original reference encoder with our designed MMCG encoder to extract emotion embedding.
+     <strong>Baseline(GST_Mel): </strong>: Use mel-spectrogram as feature input and uses the reference encoder to extract prosody embedding.<br> 
+     <strong>Proposed_MMCG: </strong>  Use MMCG as feature input and uses the reference encoder to extract prosody embedding<br>
+     <strong>Proposed_MMCG_Encoder:</strong>we use MMCG as feature input and replace the original reference encoder with our designed MMCG encoder to extract emotion embedding
     </div>
      <br>
     <h2> <b> Parallel style transfer </b></h2>
-   <b>Target Text1 : She was such a little girl that one did not expect to see such a look on her small face. </b>
+   <b>Target Text1 : They will now see what sort of woman it is that can attach me , that can attach a man of sense. </b>
    <br>
 <table style="table-layout: auto">
         <tr>
@@ -119,16 +119,16 @@
         </tr>
         <tr>
             <td>
-                <audio src="audios/parallel/a_little_princess_01-000003_1_gt.wav" controls preload="metadata"></audio>
+                <audio src="audios/parallel/CA-MP2-12-124.wav" controls preload="metadata"></audio>
             </td>
             <td>
-                <audio src="audios/parallel/a_little_princess_01-000003_4_nogan.wav" controls preload="metadata"></audio>
+                <audio src="audios/parallel/mel-CA-MP2-12-124.wav" controls preload="metadata"></audio>
             </td>
             <td>
-                <audio src="audios/parallel/a_little_princess_01-000003_2_li.wav" controls preload="metadata"></audio>
+                <audio src="audios/parallel/mmcg-CA-MP2-12-124.wav" controls preload="metadata"></audio>
             </td>
             <td>
-                <audio src="audios/parallel/a_little_princess_01-000003_3_gan.wav" controls
+                <audio src="audios/parallel/attention-CA-MP2-12-124.wav" controls
                        preload="metadata"></audio>
             </td>
         </tr>
@@ -136,7 +136,7 @@
     <br>
 
 
-      <b>Target Text 2 : I should like to know how many of all my numerous engagements take place without your being of the party. </b> 
+      <b>Target Text 2 : That you should take too much care would be quite as bad as that you should take too little. </b> 
 <table style="table-layout: auto">
         <tr>
             <td>Ground Truth & Reference Audio</td>
@@ -146,25 +146,25 @@
         </tr>
         <tr>
             <td>
-                <audio src="audios/parallel/emma_36-000191_1_gt.wav" controls preload="metadata"></audio>
+                <audio src="audios/parallel/12-000122.wav" controls preload="metadata"></audio>
             </td>
             <td>
-                <audio src="audios/parallel/emma_36-000191_4_nogan.wav" controls preload="metadata"></audio>
+                <audio src="audios/parallel/mel-12-000122.wav" controls preload="metadata"></audio>
             </td>
             <td>
-                <audio src="audios/parallel/emma_36-000191_2_li.wav" controls preload="metadata"></audio>
+                <audio src="audios/parallel/mmcg-ref-12-000122.wav" controls preload="metadata"></audio>
             </td>
             <td>
-                <audio src="audios/parallel/emma_36-000191_3_gan.wav" controls preload="metadata"></audio>
+                <audio src="audios/parallel/attention-12-000122.wav" controls preload="metadata"></audio>
             </td>
         </tr>
     </table>
     <br>
   <br>
     <h2> <b> Non-Parallel style transfer </b></h2>
-  <b>Reference Audio Content 1 : That you should take too much care would be quite as bad as that you should take too little.</b>
+  <b>Reference Audio Content 1 : I have told him so a dozen times.</b>
   <br>
-   <b> Target Text 1 :  That was forgotten in the simple and still strong attachment of wife to husband.</b>
+   <b> Target Text 1 : This news the girl started with a sense of pain.</b>
     <table style="table-layout: auto">
         <tr>
             <td>Ground Truth & Reference Audio</td>
@@ -174,25 +174,25 @@
         </tr>
         <tr>
             <td>
-                <audio src="audios/no-parallel/12-000122_1_gt.wav" controls preload="metadata"></audio>
+                <audio src="audios/no-parallel/04-000097.wav" controls preload="metadata"></audio>
             </td>
             <td>
-                <audio src="audios/no-parallel/12-000122_4_nogan.wav" controls preload="metadata"></audio>
+                <audio src="audios/no-parallel/mel-04-000097.wav" controls preload="metadata"></audio>
             </td>
             <td>
-                <audio src="audios/no-parallel/12-000122_2_li.wav" controls preload="metadata"></audio>
+                <audio src="audios/no-parallel/mmcg-04-000097.wav" controls preload="metadata"></audio>
             </td>
             <td>
-                <audio src="audios/no-parallel/12-000122_3_gan.wav" controls
+                <audio src="audios/no-parallel/attention-04-000097.wav" controls
                        preload="metadata"></audio>
             </td>
         </tr>
     </table>
     <br>
 <br>
-<b>Reference Audio Content 2 : This was very roomy, with four good stalls.</b> 
+<b>Reference Audio Content 2 : You look as if you had eighty thousand a year.</b> 
   <br>
-   <b> Target Text 2 : This was more than the poor girl could bear. </b>
+   <b> Target Text 2 : He liked everything to be natural. </b>
     <table style="table-layout: auto">
         <tr>
             <td>Ground Truth & Reference Audio</td>
@@ -202,16 +202,16 @@
         </tr>
         <tr>
             <td>
-                <audio src="audios/no-parallel/black_beauty_04-000014_1_1_gt.wav" controls preload="metadata"></audio>
+                <audio src="audios/no-parallel/04-000127.wav" controls preload="metadata"></audio>
             </td>
             <td>
-                <audio src="audios/no-parallel/black_beauty_04-000014_1_4_nogan.wav" controls preload="metadata"></audio>
+                <audio src="audios/no-parallel/mel-04-000127.wav" controls preload="metadata"></audio>
             </td>
             <td>
-                <audio src="audios/no-parallel/black_beauty_04-000014_1_2_li.wav" controls preload="metadata"></audio>
+                <audio src="audios/no-parallel/mmcg-04-000127.wav" controls preload="metadata"></audio>
             </td>
             <td>
-                <audio src="audios/no-parallel/black_beauty_04-000014_1_3_gan.wav" controls preload="metadata"></audio>
+                <audio src="audios/no-parallel/attention-04-000127.wav" controls preload="metadata"></audio>
             </td>
         </tr>
     </table>
